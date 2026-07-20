@@ -1,77 +1,52 @@
-# React + TypeScript + Vite
+# Employee Polls Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is my submission for the Udacity React Fundamentals course project. The project is a polls application that allows users to login, create polls, answer polls, and review the leaderboard.
 
-Currently, two official plugins are available:
+The project was bootstrapped with [Vite](https://vitejs.dev/) and uses [React](https://reactjs.org/) for the frontend. The application is designed to be responsive and user-friendly, providing a seamless experience for managing a personal library.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+# Setup Instructions
 
-## React Compiler
+To get started with the project, follow these steps:
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+1.  Clone the repository to your local machine:
 
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+git clone <repository-url>
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2.  Navigate to the project directory:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+cd udacity-employee-polls
 ```
+
+3.  Install the dependencies:
+
+```bash
+npm install
+```
+
+4.  Start the server:
+
+```bash
+npm start
+```
+
+5.  Open your browser and go to `http://localhost:3001` to view the application.
+
+# Features
+
+The Employee Polls project has the following features:
+
+- **Login**: Basic login for users in the \_DATA.js
+- **Home**: Displays a list of polls
+- **Add Poll**: Allows a user to add a new poll with two options
+- **Poll Details**: When unanswered, displays a poll with the two options. Once an option is selected, the poll results are displayed. The user cannot change their answer.
+
+# Troubleshooting
+
+If you encounter any issues while setting up or running the project, please check the following:
+
+- Ensure that you have Node.js and npm installed on your machine. You can download them from [Node.js official website](https://nodejs.org/).
+- Make sure you are in the correct project directory when running the commands.
+- If you still face issues, try deleting the `node_modules` folder and the `package-lock.json` file, then run `npm install` again.
