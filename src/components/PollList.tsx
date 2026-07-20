@@ -1,17 +1,42 @@
 import { useEffect } from "react";
-import { useAppDispatch } from "../store";
+import { useAppDispatch, useAppSelector } from "../store";
 import { handleInitialData } from "../actions/shared";
+import Poll from "../components/Poll";
 
-const PollList = () => {
+const PollList = ({
+  showAnsweredQuestions,
+}: {
+  showAnsweredQuestions: boolean;
+}) => {
   const dispatch = useAppDispatch();
+  const questions = useAppSelector((state) => state.polls);
+  const authedUser = useAppSelector((state) => state.authedUser);
+  const users = useAppSelector((state) => state.users);
+  const user = authedUser ? users[authedUser] : null;
+
   useEffect(() => {
-    dispatch(handleInitialData()).then(() => {
-      console.log("Initial data loaded");
-    });
+    dispatch(handleInitialData());
   }, [dispatch]);
   return (
-    <div>
-      <h1>Poll List</h1>
+    <div className="poll-list">
+      <div className="poll-list-header">
+        <h2>{showAnsweredQuestions ? "Done" : "New Questions"}</h2>
+      </div>
+      <div className="poll-list-container">
+        <ul>
+          {Object.values(questions)
+            .filter((question) => {
+              const isAnswered =
+                user && user.answers[question.id] !== undefined ? true : false;
+              return showAnsweredQuestions ? isAnswered : !isAnswered;
+            })
+            .map((question) => (
+              <li key={question.id}>
+                <Poll question={question} />
+              </li>
+            ))}
+        </ul>
+      </div>
     </div>
   );
 };
