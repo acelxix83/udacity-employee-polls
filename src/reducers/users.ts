@@ -1,4 +1,4 @@
-import { ANSWER_POLL } from "../actions/polls";
+import { ANSWER_POLL, CREATE_POLL } from "../actions/polls";
 import { RECEIVE_USERS } from "../actions/users";
 import type {
   User,
@@ -6,6 +6,7 @@ import type {
   LoginAction,
   SetAuthedUserAction,
   AnswerPollAction,
+  CreatePollAction,
 } from "../types";
 
 const initialState: Record<string, User> = {};
@@ -16,7 +17,8 @@ export default function users(
     | ReceiveUsersAction
     | LoginAction
     | SetAuthedUserAction
-    | AnswerPollAction,
+    | AnswerPollAction
+    | CreatePollAction,
 ) {
   switch (action.type) {
     case RECEIVE_USERS: {
@@ -41,6 +43,17 @@ export default function users(
             ...user.answers,
             [qid]: answer,
           },
+        },
+      };
+    }
+    case CREATE_POLL: {
+      const { question } = action as CreatePollAction;
+      const user = state[question.author];
+      return {
+        ...state,
+        [question.author]: {
+          ...user,
+          questions: user.questions.concat([question.id]),
         },
       };
     }

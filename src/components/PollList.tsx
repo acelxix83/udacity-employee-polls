@@ -15,11 +15,13 @@ const PollList = ({
   const user = authedUser ? users[authedUser] : null;
 
   const getFilteredQuestions = () => {
-    return Object.values(questions).filter((question) => {
-      const isAnswered =
-        user && user.answers[question.id] !== undefined ? true : false;
-      return showAnsweredQuestions ? isAnswered : !isAnswered;
-    });
+    return Object.values(questions)
+      .filter((question) => {
+        const isAnswered =
+          user && user.answers[question.id] !== undefined ? true : false;
+        return showAnsweredQuestions ? isAnswered : !isAnswered;
+      })
+      .sort((a, b) => b.timestamp - a.timestamp);
   };
 
   const hasQuestions = getFilteredQuestions().length > 0;

@@ -34,11 +34,11 @@ const Login = () => {
   return (
     <div>
       <h3 className="center">Employee Polls</h3>
-      {/* TODO: add image */}
+      <div className="login-image-container"></div>
       <h3 className="center">Login</h3>
       <form onSubmit={handleLoginClick}>
         {error && <p className="error">Invalid username or password</p>}
-        <label>User</label>
+        <label>User: </label>
         <input
           type="text"
           placeholder="User"
@@ -46,7 +46,7 @@ const Login = () => {
           onChange={handleSetUser}
         />
         <br />
-        <label>Password</label>
+        <label>Password: </label>
         <input
           type="password"
           placeholder="Password"

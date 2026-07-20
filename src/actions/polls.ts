@@ -24,10 +24,10 @@ function answerPoll(answerQuestionRequest: AnswerQuestionRequest) {
     answer: answerQuestionRequest.answer,
   };
 }
-function createPoll(createQuestionRequest: CreateQuestionRequest) {
+function createPoll(question: Question) {
   return {
     type: CREATE_POLL,
-    question: createQuestionRequest,
+    question,
   };
 }
 
@@ -49,8 +49,8 @@ export function handleAnswerPoll(info: AnswerQuestionRequest) {
 export function handleCreatePoll(info: CreateQuestionRequest) {
   return (dispatch: Dispatch) => {
     return saveQuestion(info)
-      .then(() => {
-        dispatch(createPoll(info));
+      .then((question) => {
+        dispatch(createPoll(question));
       })
       .catch((e) => {
         console.warn("Error in handleCreatePoll: ", e);

@@ -48,7 +48,7 @@ export interface AnswerPollAction {
 
 export interface CreatePollAction {
   type: typeof CREATE_POLL;
-  question: CreateQuestionRequest;
+  question: Question;
 }
 
 export interface ReceivePollsAction {

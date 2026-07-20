@@ -1,11 +1,16 @@
-import { ANSWER_POLL, RECEIVE_POLLS } from "../actions/polls";
-import type { Question, AnswerPollAction, ReceivePollsAction } from "../types";
+import { ANSWER_POLL, CREATE_POLL, RECEIVE_POLLS } from "../actions/polls";
+import type {
+  Question,
+  AnswerPollAction,
+  ReceivePollsAction,
+  CreatePollAction,
+} from "../types";
 
 const initialState: Record<string, Question> = {};
 
 export default function polls(
   state = initialState,
-  action: AnswerPollAction | ReceivePollsAction,
+  action: AnswerPollAction | ReceivePollsAction | CreatePollAction,
 ) {
   switch (action.type) {
     case RECEIVE_POLLS: {
@@ -31,6 +36,13 @@ export default function polls(
             votes: state[qid][answer].votes.concat([authedUser]),
           },
         },
+      };
+    }
+    case CREATE_POLL: {
+      const { question } = action as CreatePollAction;
+      return {
+        ...state,
+        [question.id]: question,
       };
     }
     default:
