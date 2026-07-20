@@ -14,6 +14,16 @@ const PollList = ({
   const users = useAppSelector((state) => state.users);
   const user = authedUser ? users[authedUser] : null;
 
+  const getFilteredQuestions = () => {
+    return Object.values(questions).filter((question) => {
+      const isAnswered =
+        user && user.answers[question.id] !== undefined ? true : false;
+      return showAnsweredQuestions ? isAnswered : !isAnswered;
+    });
+  };
+
+  const hasQuestions = getFilteredQuestions().length > 0;
+
   useEffect(() => {
     dispatch(handleInitialData());
   }, [dispatch]);
@@ -23,18 +33,19 @@ const PollList = ({
         <h2>{showAnsweredQuestions ? "Done" : "New Questions"}</h2>
       </div>
       <div className="poll-list-container">
+        {!hasQuestions && (
+          <p className="no-items">
+            {showAnsweredQuestions
+              ? "No questions answered."
+              : "No new questions."}
+          </p>
+        )}
         <ul>
-          {Object.values(questions)
-            .filter((question) => {
-              const isAnswered =
-                user && user.answers[question.id] !== undefined ? true : false;
-              return showAnsweredQuestions ? isAnswered : !isAnswered;
-            })
-            .map((question) => (
-              <li key={question.id}>
-                <Poll question={question} />
-              </li>
-            ))}
+          {getFilteredQuestions().map((question) => (
+            <li key={question.id}>
+              <Poll question={question} />
+            </li>
+          ))}
         </ul>
       </div>
     </div>

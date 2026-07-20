@@ -1,197 +1,9 @@
-/* Styles generated with template */
-
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
-
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-}
-
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
-}
-
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
-  width: 100%;
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
-
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
-}
-
-/* Nav Styles (based on styles from chirper sample app */
-
 .nav ul {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   text-decoration: none;
+  margin: 20px 30px 0px;
 }
 
 .nav li:first-child {
@@ -236,17 +48,27 @@ li {
 .poll-list {
   margin: 30px;
   border: 1px solid #ccc;
+  border-radius: 7px;
+}
+
+.no-items {
+  text-align: center;
+  padding: 20px;
+  color: #ccc;
 }
 
 .poll-list-header {
   text-align: center;
   border-bottom: 1px solid #ccc;
   padding: 10px;
+  background-color: #ccc;
+  border-radius: 5px 5px 0 0;
 }
 
 .poll-list-header h2 {
   margin: 0;
   font-size: 25px;
+  color: #333;
 }
 
 .poll-list-container {
@@ -265,6 +87,7 @@ li {
   height: 135px;
   width: 250px;
   display: grid;
+  border-radius: 7px;
 }
 
 .poll .author {
@@ -272,10 +95,13 @@ li {
   margin-bottom: -5px;
 }
 
-.poll .timestamp {
+.poll .poll-detail {
+  margin-bottom: 15px;
+}
+
+.poll-detail {
   color: #ccc;
   font-size: 15px;
-  margin-bottom: 15px;
 }
 
 .poll-footer {
@@ -330,13 +156,63 @@ li {
 }
 
 .voted {
-  color: white;
+  color: #fff;
   border: 1px solid #4caf50;
 }
 
 .voted .poll-footer {
   background-color: #4caf50;
-  color: white;
+  color: #fff;
+}
+
+/* Leaderboard styles */
+.leaderboard-table {
+  width: 95%;
+  border-spacing: 0;
+  margin: 30px;
+  color: #fff;
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+  border: 1px solid #ccc;
+  padding: 15px;
+  text-align: left;
+}
+
+.leaderboard-table th {
+  background-color: #ccc;
+  color: #333;
+  border-right: 1px solid #333;
+}
+
+.leaderboard-table th:first-child {
+  border-radius: 7px 0 0 0;
+}
+
+.leaderboard-table th:last-child {
+  border: 1px solid #ccc;
+  border-radius: 0 7px 0 0;
+}
+
+.leaderboard-table tr:last-child td:first-child {
+  border-radius: 0 0 0 7px;
+}
+
+.leaderboard-table tr:last-child td:last-child {
+  border-radius: 0 0 7px 0;
+}
+
+.user-info {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.active-user {
+  color: #4caf50;
 }
 
 /* Avatar styles */
@@ -344,6 +220,14 @@ li {
 .avatar {
   width: 300px;
   height: 300px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.avatar-small {
+  float: left;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   margin-right: 10px;
 }

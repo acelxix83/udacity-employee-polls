@@ -15,7 +15,7 @@ const Poll = ({ question }: { question: Question }) => {
   return (
     <div className="poll">
       <h3 className="author">{question.author}</h3>
-      <span className="timestamp">{formatDate(question.timestamp)}</span>
+      <span className="poll-detail">{formatDate(question.timestamp)}</span>
       <div className="poll-footer">
         <button className="submit-button" onClick={handleShow}>
           Show
