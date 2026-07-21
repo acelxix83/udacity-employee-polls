@@ -2,6 +2,10 @@ import PollList from "./PollList";
 import { useState } from "react";
 import { PiToggleLeftFill, PiToggleRightFill } from "react-icons/pi";
 
+/**
+ * Home component that displays a list of polls and allows users to toggle between answered and unanswered questions.
+ * @returns JSX.Element
+ */
 const Home = () => {
   const [showAnsweredQuestions, setShowAnsweredQuestions] = useState(false);
 

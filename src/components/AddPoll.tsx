@@ -3,6 +3,11 @@ import { useAppDispatch, useAppSelector } from "../store";
 import { handleCreatePoll } from "../actions/polls";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * AddPoll component that allows authenticated users to create a new poll question with two options.
+ * It handles form submission and dispatches the action to create the poll, then navigates back to the home page.
+ * @returns JSX.Element
+ */
 const AddPoll = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -10,6 +15,10 @@ const AddPoll = () => {
   const [optionOneText, setOptionOneText] = useState("");
   const [optionTwoText, setOptionTwoText] = useState("");
 
+  /**
+   * Handles the form submission for creating a new poll. It dispatches the action to create the poll and navigates back to the home page.
+   * @param e Submit event
+   */
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 

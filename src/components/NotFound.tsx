@@ -1,3 +1,7 @@
+/**
+ * NotFound component that displays a 404 error message when a page is not found.
+ * @returns JSX.Element
+ */
 const NotFound = () => {
   return (
     <div>

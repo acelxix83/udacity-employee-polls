@@ -1,6 +1,10 @@
 import { NavLink } from "react-router-dom";
 import { useAppSelector } from "../store";
 
+/**
+ * Nav component that displays navigation links and user information for authenticated users.
+ * @returns JSX.Element
+ */
 const Nav = () => {
   const authedUser = useAppSelector((state) => state.authedUser);
   const user = useAppSelector((state) => state.users[authedUser ?? ""]);

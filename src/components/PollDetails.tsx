@@ -3,6 +3,11 @@ import { useAppSelector } from "../store";
 import PollOption from "./PollOption";
 import { useEffect } from "react";
 
+/**
+ * PollDetails component that displays the details of a specific poll question, including the author and options.
+ * It also handles navigation to a 404 page if the question is not found.
+ * @returns JSX.Element
+ */
 const PollDetails = () => {
   const { question_id } = useParams<{ question_id: string }>();
   const question = useAppSelector((state) => state.polls)[question_id || ""];
@@ -11,6 +16,11 @@ const PollDetails = () => {
 
   const navigate = useNavigate();
 
+  /**
+   * Effect that checks if the question exists. If not, it navigates to a 404 page.
+   * This effect runs whenever the question or navigate values change.
+   * It ensures that users are redirected to a 404 page if they try to access a non-existent poll question.
+   */
   useEffect(() => {
     if (!question) {
       navigate("/404"); // Redirect to a 404 page if the question is not found

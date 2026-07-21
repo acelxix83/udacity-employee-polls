@@ -1,6 +1,10 @@
 import { useAppSelector } from "../store";
 import type { User } from "../types";
 
+/**
+ * Leaderboard component that displays a leaderboard of users based on their answered and created polls.
+ * @returns JSX.Element
+ */
 const Leaderboard = () => {
   const users = useAppSelector((state) => state.users);
   const authedUser = useAppSelector((state) => state.authedUser);

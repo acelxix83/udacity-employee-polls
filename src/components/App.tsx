@@ -14,10 +14,22 @@ import Home from "./Home";
 import { useAppDispatch } from "../store";
 import { handleInitialData } from "../actions/shared";
 
+/**
+ * App component that serves as the main entry point for the application. It handles routing and authentication.
+ * @returns JSX.Element
+ */
 function App() {
   const dispatch = useAppDispatch();
   const cachedUser = sessionStorage.getItem("authedUser");
   const [loading, setLoading] = useState(true);
+
+  /**
+   * Fetches initial data and sets the authenticated user from session storage if available.
+   * This effect runs once when the component mounts.
+   * It dispatches the handleInitialData action to load the necessary data for the application.
+   * If a cached user is found in session storage, it dispatches the setAuthedUser action to set the authenticated user in the Redux store.
+   * After fetching the initial data and setting the authenticated user, it sets the loading state to false.
+   */
   useEffect(() => {
     dispatch(handleInitialData()).then(() => setLoading(false));
     if (cachedUser) {

@@ -3,6 +3,13 @@ import { handleAnswerPoll } from "../actions/polls";
 import type { User } from "../types";
 import { PiCheckFatFill } from "react-icons/pi";
 
+/**
+ * PollOption component that displays a single poll option, its vote count, and allows users to vote for the option if they haven't already voted.
+ * @param props The component props containing the question ID and option type.
+ * @param props.questionId The ID of the poll question.
+ * @param props.option The option type, either "optionOne" or "optionTwo".
+ * @returns JSX.Element
+ */
 const PollOption = ({
   questionId,
   option,
@@ -22,6 +29,10 @@ const PollOption = ({
     question.optionOne.votes.length + question.optionTwo.votes.length;
   const percentage = totalVotes > 0 ? (optionVotes / totalVotes) * 100 : 0;
 
+  /**
+   * Handles the vote action for the given poll option.
+   * @param option optionOne or optionTwo
+   */
   const handleVote = (option: "optionOne" | "optionTwo") => {
     dispatch(
       handleAnswerPoll({

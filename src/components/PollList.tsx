@@ -1,6 +1,12 @@
 import { useAppSelector } from "../store";
 import Poll from "../components/Poll";
 
+/**
+ * PollList component that displays a list of polls based on whether they are answered or unanswered by the authenticated user.
+ * @param props The component props containing the flag to show answered questions.
+ * @param props.showAnsweredQuestions A boolean indicating whether to show answered questions.
+ * @returns JSX.Element
+ */
 const PollList = ({
   showAnsweredQuestions,
 }: {
@@ -11,6 +17,11 @@ const PollList = ({
   const users = useAppSelector((state) => state.users);
   const user = authedUser ? users[authedUser] : null;
 
+  /**
+   * Filters the list of questions based on whether they are answered or unanswered by the authenticated user.
+   * Only questions that match the filter criteria are returned, and they are sorted by timestamp in descending order.
+   * @returns An array of filtered questions sorted by timestamp in descending order.
+   */
   const getFilteredQuestions = () => {
     return Object.values(questions)
       .filter((question) => {
