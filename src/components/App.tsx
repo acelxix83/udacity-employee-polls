@@ -1,6 +1,5 @@
 import "../App.css";
 import { useEffect, useState } from "react";
-import { setAuthedUser } from "../actions/authedUser";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Login from "./Login";
@@ -20,22 +19,14 @@ import { handleInitialData } from "../actions/shared";
  */
 function App() {
   const dispatch = useAppDispatch();
-  const cachedUser = sessionStorage.getItem("authedUser");
   const [loading, setLoading] = useState(true);
 
   /**
-   * Fetches initial data and sets the authenticated user from session storage if available.
-   * This effect runs once when the component mounts.
-   * It dispatches the handleInitialData action to load the necessary data for the application.
-   * If a cached user is found in session storage, it dispatches the setAuthedUser action to set the authenticated user in the Redux store.
-   * After fetching the initial data and setting the authenticated user, it sets the loading state to false.
+   * Hook to dispatch the handleInitialData action when the component mounts.
    */
   useEffect(() => {
     dispatch(handleInitialData()).then(() => setLoading(false));
-    if (cachedUser) {
-      dispatch(setAuthedUser(cachedUser));
-    }
-  }, [dispatch, cachedUser]);
+  }, [dispatch]);
 
   return loading ? (
     <div className="loading">
