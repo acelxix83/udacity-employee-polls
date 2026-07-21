@@ -172,6 +172,11 @@ li {
   width: 500px;
 }
 
+.poll-option h3 {
+  overflow-wrap: break-word;
+  width: 500px;
+}
+
 .voted {
   color: #fff;
   border: 1px solid #4caf50;
