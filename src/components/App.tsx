@@ -1,5 +1,6 @@
 import "../App.css";
-import { Fragment, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { setAuthedUser } from "../actions/authedUser";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Login from "./Login";
@@ -15,12 +16,21 @@ import { handleInitialData } from "../actions/shared";
 
 function App() {
   const dispatch = useAppDispatch();
+  const cachedUser = sessionStorage.getItem("authedUser");
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    dispatch(handleInitialData());
-  }, [dispatch]);
+    dispatch(handleInitialData()).then(() => setLoading(false));
+    if (cachedUser) {
+      dispatch(setAuthedUser(cachedUser));
+    }
+  }, [dispatch, cachedUser]);
 
-  return (
-    <Fragment>
+  return loading ? (
+    <div className="loading">
+      <h2>Loading...</h2>
+    </div>
+  ) : (
+    <div>
       <Nav />
       <Routes>
         <Route path="/login" element={<Login />} />
@@ -33,7 +43,7 @@ function App() {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </Fragment>
+    </div>
   );
 }
 

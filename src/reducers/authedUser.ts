@@ -10,6 +10,7 @@ export default function authedUser(
   switch (action.type) {
     case SET_AUTHED_USER: {
       const { user } = action as SetAuthedUserAction;
+      sessionStorage.setItem("authedUser", user);
       return user;
     }
     default:

@@ -8,8 +8,10 @@ const Logout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(handleLogout());
-    navigate("/login");
+    setTimeout(() => {
+      dispatch(handleLogout());
+      navigate("/login");
+    }, 2000);
   }, [dispatch, navigate]);
 
   return (

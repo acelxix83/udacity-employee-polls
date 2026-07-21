@@ -1,15 +1,22 @@
 import type { SubmitEvent } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { handleLogin } from "../actions/users";
-import { useAppDispatch } from "../store";
+import { useAppDispatch, useAppSelector } from "../store";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useAppDispatch();
+  const authedUser = useAppSelector((state) => state.authedUser);
   const navigate = useNavigate();
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
+
+  useEffect(() => {
+    if (authedUser) {
+      navigate("/");
+    }
+  }, [authedUser, navigate]);
 
   const handleLoginClick = (e: SubmitEvent<HTMLFormElement>) => {
     setError(false);

@@ -10,6 +10,12 @@ body {
   color: red;
 }
 
+.loading {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 50px;
+}
+
 /* Nav Styles */
 
 .nav ul {
