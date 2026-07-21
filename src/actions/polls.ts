@@ -34,27 +34,25 @@ function createPoll(question: Question) {
 // async action creators:
 
 export function handleAnswerPoll(info: AnswerQuestionRequest) {
-  return (dispatch: Dispatch) => {
-    return saveQuestionAnswer(info)
-      .then(() => {
-        dispatch(answerPoll(info));
-      })
-      .catch((e) => {
-        console.warn("Error in handleAnswerPoll: ", e);
-        alert("There was an error answering the poll. Try again.");
-      });
+  return async (dispatch: Dispatch) => {
+    try {
+      await saveQuestionAnswer(info);
+      dispatch(answerPoll(info));
+    } catch (e) {
+      console.warn("Error in handleAnswerPoll: ", e);
+      alert("There was an error answering the poll. Try again.");
+    }
   };
 }
 
 export function handleCreatePoll(info: CreateQuestionRequest) {
-  return (dispatch: Dispatch) => {
-    return saveQuestion(info)
-      .then((question) => {
-        dispatch(createPoll(question));
-      })
-      .catch((e) => {
-        console.warn("Error in handleCreatePoll: ", e);
-        alert("There was an error creating the poll. Try again.");
-      });
+  return async (dispatch: Dispatch) => {
+    try {
+      const question = await saveQuestion(info);
+      dispatch(createPoll(question));
+    } catch (e) {
+      console.warn("Error in handleCreatePoll: ", e);
+      alert("There was an error creating the poll. Try again.");
+    }
   };
 }
