@@ -25,10 +25,10 @@ const AddPoll = () => {
   };
 
   return (
-    <div className="add-poll-container">
+    <div>
       <h3>Would You Rather</h3>
       <p>Create Your Own Poll</p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form">
         <label htmlFor="optionOne">Option One:</label>
         <input
           className="option-input"

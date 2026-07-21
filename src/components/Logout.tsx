@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../store";
 import { handleLogout } from "../actions/users";
 import { useEffect } from "react";
+import reactLogo from "../assets/react.svg";
 
 const Logout = () => {
   const dispatch = useAppDispatch();
@@ -17,6 +18,7 @@ const Logout = () => {
   return (
     <div className="logout">
       <h3 className="center">Logging you out...</h3>
+      <img src={reactLogo} className="framework" alt="React logo" />
     </div>
   );
 };

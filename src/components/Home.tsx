@@ -1,10 +1,28 @@
 import PollList from "./PollList";
+import { useState } from "react";
+import { PiToggleLeftFill, PiToggleRightFill } from "react-icons/pi";
 
 const Home = () => {
+  const [showAnsweredQuestions, setShowAnsweredQuestions] = useState(false);
+
   return (
     <div>
-      <PollList showAnsweredQuestions={false} />
-      <PollList showAnsweredQuestions={true} />
+      <div className="filter">
+        <div className="toggle-icons">
+          <span>Show Answered Questions:</span>
+          <div
+            className="toggle-icon"
+            onClick={() => setShowAnsweredQuestions(!showAnsweredQuestions)}
+          >
+            {showAnsweredQuestions ? (
+              <PiToggleRightFill className="toggle-active" />
+            ) : (
+              <PiToggleLeftFill />
+            )}
+          </div>
+        </div>
+      </div>
+      <PollList showAnsweredQuestions={showAnsweredQuestions} />
     </div>
   );
 };

@@ -51,9 +51,10 @@ const Login = () => {
       <h3 className="center">Employee Polls</h3>
       <div className="login-image-container"></div>
       <h3 className="center">Login</h3>
-      <form onSubmit={handleLoginClick} className="login-form">
+      <form onSubmit={handleLoginClick} className="form">
         <span>User: </span>
         <input
+          name="user"
           type="text"
           placeholder="User"
           value={user}
@@ -63,6 +64,7 @@ const Login = () => {
         <br />
         <span>Password: </span>
         <input
+          name="password"
           type="password"
           placeholder="Password"
           value={password}

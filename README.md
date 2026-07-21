@@ -38,10 +38,11 @@ npm start
 
 The Employee Polls project has the following features:
 
-- **Login**: Basic login for users in the \_DATA.js
-- **Home**: Displays a list of polls
+- **Login**: Basic login for users in \_DATA.js
+- **Home**: Displays a list of unanswered or answered polls
 - **Add Poll**: Allows a user to add a new poll with two options
 - **Poll Details**: When unanswered, displays a poll with the two options. Once an option is selected, the poll results are displayed. The user cannot change their answer.
+- **Leaderboard**: Allows a user to see how many questions all users have created and answered.
 
 # Troubleshooting
 

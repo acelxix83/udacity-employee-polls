@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from "../store";
 import { handleAnswerPoll } from "../actions/polls";
 import type { User } from "../types";
+import { PiCheckFatFill } from "react-icons/pi";
 
 const PollOption = ({
   questionId,
@@ -37,7 +38,8 @@ const PollOption = ({
       <div className="poll-footer">
         {hasVoted ? (
           <p className="poll-results">
-            {optionVotes} out of {totalVotes} votes ({percentage.toFixed(2)}%)
+            {selectedThisOption && <PiCheckFatFill />} {optionVotes} out of{" "}
+            {totalVotes} votes ({percentage.toFixed(2)}%)
           </p>
         ) : (
           <button className="submit-button" onClick={() => handleVote(option)}>
