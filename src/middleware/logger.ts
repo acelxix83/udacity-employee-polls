@@ -2,6 +2,10 @@ import type { Middleware } from "@reduxjs/toolkit";
 import type { RootState } from "../reducers";
 
 const logger: Middleware<object, RootState> = (store) => (next) => (action) => {
+  if (process.env.NODE_ENV === "production") {
+    return next(action);
+  }
+
   const actionType =
     typeof action === "object" && action !== null && "type" in action
       ? String(action.type)

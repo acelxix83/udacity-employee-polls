@@ -5,6 +5,8 @@ import { useAppDispatch, useAppSelector } from "../store";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const searchParams = new URLSearchParams(window.location.search);
+  const redirectTo = searchParams.get("redirectTo");
   const dispatch = useAppDispatch();
   const authedUser = useAppSelector((state) => state.authedUser);
   const navigate = useNavigate();
@@ -14,16 +16,16 @@ const Login = () => {
 
   useEffect(() => {
     if (authedUser) {
-      navigate("/");
+      navigate(redirectTo ?? "/");
     }
-  }, [authedUser, navigate]);
+  }, [authedUser, navigate, redirectTo]);
 
   const handleLoginClick = (e: SubmitEvent<HTMLFormElement>) => {
     setError(false);
     e.preventDefault();
     dispatch(handleLogin(user, password))
       .then(() => {
-        navigate("/");
+        navigate(redirectTo ?? "/");
       })
       .catch(() => {
         setError(true);

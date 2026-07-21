@@ -22,7 +22,6 @@ export function handleLogin(
       await loginUser(user, password);
       dispatch(setAuthedUser(user));
     } catch (e) {
-      console.warn("Error in handleLogin: ", e);
       return Promise.reject(e);
     }
   };
