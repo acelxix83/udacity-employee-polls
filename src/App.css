@@ -1,5 +1,13 @@
+body {
+  color: #eee;
+}
+
 .center {
   text-align: center;
+}
+
+.error {
+  color: red;
 }
 
 /* Nav Styles */
@@ -28,12 +36,19 @@
 
 .nav a.active {
   font-weight: bold;
-  text-decoration: underline;
   cursor: default;
 }
 
 .nav a.active:hover {
   color: #eee;
+  text-decoration: none;
+}
+
+.logout-link {
+  font-weight: normal;
+  color: #eee;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 ul {
@@ -44,10 +59,6 @@ li {
   list-style-type: none;
   padding: 10px;
   text-decoration: none;
-}
-
-.error {
-  color: red;
 }
 
 /* Poll List Styles */
@@ -230,10 +241,18 @@ li {
   margin-right: 10px;
 }
 
-.avatar-small {
+.avatar-medium {
   float: left;
   width: 50px;
   height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.avatar-small {
+  float: left;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   margin-right: 10px;
 }
@@ -261,6 +280,13 @@ li {
 }
 
 /* Login styles */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
 .login-image-container {
   background-image: url(./assets/jon-tyson-PXB7yEM5LVs-unsplash.jpg);
   width: 250px;
@@ -268,4 +294,11 @@ li {
   background-size: cover;
   background-position: center;
   margin: 20px auto;
+}
+
+.logged-in-user-info {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 20px;
 }

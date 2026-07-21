@@ -20,15 +20,23 @@ const Login = () => {
       })
       .catch(() => {
         setError(true);
+        setPassword("");
       });
   };
 
   const handleSetUser = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //sanitize input if needed
+    setError(false);
     if (e.target.value.length > 20) {
       return;
     }
-    setUser(e.target.value);
+
+    const sanitizedQueryString = e.target.value.replace(/[^A-Za-z0-9]/g, "");
+    setUser(sanitizedQueryString);
+  };
+
+  const handleSetPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setError(false);
+    setPassword(e.target.value);
   };
 
   return (
@@ -36,25 +44,27 @@ const Login = () => {
       <h3 className="center">Employee Polls</h3>
       <div className="login-image-container"></div>
       <h3 className="center">Login</h3>
-      <form onSubmit={handleLoginClick}>
-        {error && <p className="error">Invalid username or password</p>}
-        <label>User: </label>
+      <form onSubmit={handleLoginClick} className="login-form">
+        <span>User: </span>
         <input
           type="text"
           placeholder="User"
           value={user}
+          maxLength={20}
           onChange={handleSetUser}
         />
         <br />
-        <label>Password: </label>
+        <span>Password: </span>
         <input
           type="password"
           placeholder="Password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          maxLength={20}
+          onChange={handleSetPassword}
         />
         <br />
         <button>Login</button>
+        {error && <p className="error">Invalid username or password</p>}
       </form>
     </div>
   );

@@ -27,3 +27,9 @@ export function handleLogin(
     }
   };
 }
+
+export function handleLogout(): (dispatch: AppDispatch) => void {
+  return (dispatch: AppDispatch) => {
+    dispatch(setAuthedUser(""));
+  };
+}

@@ -27,7 +27,7 @@ const Leaderboard = () => {
               <tr key={user.id}>
                 <td>
                   <img
-                    className="avatar-small"
+                    className="avatar-medium"
                     src={user.avatarURL || ""}
                     alt={`${user.name}'s avatar`}
                   />

@@ -1,6 +1,4 @@
-import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../store";
-import { handleInitialData } from "../actions/shared";
+import { useAppSelector } from "../store";
 import Poll from "../components/Poll";
 
 const PollList = ({
@@ -8,7 +6,6 @@ const PollList = ({
 }: {
   showAnsweredQuestions: boolean;
 }) => {
-  const dispatch = useAppDispatch();
   const questions = useAppSelector((state) => state.polls);
   const authedUser = useAppSelector((state) => state.authedUser);
   const users = useAppSelector((state) => state.users);
@@ -26,9 +23,6 @@ const PollList = ({
 
   const hasQuestions = getFilteredQuestions().length > 0;
 
-  useEffect(() => {
-    dispatch(handleInitialData());
-  }, [dispatch]);
   return (
     <div className="poll-list">
       <div className="poll-list-header">

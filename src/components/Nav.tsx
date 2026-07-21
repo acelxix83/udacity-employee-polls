@@ -1,10 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../store";
 
 const Nav = () => {
-  const authedUser = useSelector(
-    (state: { authedUser: string }) => state.authedUser,
-  );
+  const authedUser = useAppSelector((state) => state.authedUser);
+  const user = useAppSelector((state) => state.users[authedUser ?? ""]);
 
   if (!authedUser) {
     return null;
@@ -29,6 +28,19 @@ const Nav = () => {
         <li>
           <NavLink to="/add" className={getActiveClass}>
             New
+          </NavLink>
+        </li>
+        <li className="logged-in-user-info">
+          <img
+            className="avatar-small"
+            src={(user && user.avatarURL) || "null"}
+            alt={`${(user && user.name) || ""}'s avatar`}
+          />
+          <div>{authedUser}</div>
+        </li>
+        <li className="">
+          <NavLink to="/logout" className={getActiveClass}>
+            Logout
           </NavLink>
         </li>
       </ul>
