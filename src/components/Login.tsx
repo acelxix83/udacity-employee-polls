@@ -35,10 +35,6 @@ const Login = () => {
 
   const handleSetUser = (e: React.ChangeEvent<HTMLInputElement>) => {
     setError(false);
-    if (e.target.value.length > 20) {
-      return;
-    }
-
     const sanitizedQueryString = e.target.value.replace(/[^A-Za-z0-9]/g, "");
     setUser(sanitizedQueryString);
   };
